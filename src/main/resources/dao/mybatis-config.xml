@@ -5,8 +5,8 @@
     <settings>
         <setting name="cacheEnabled" value="false"/>
     </settings>
-    <!--<mappers>
-        &lt;!&ndash;sample&ndash;&gt; todo
+    <mappers>
+        <!--sample-->
         <mapper resource="/dao/sample/mapper-sample.xml"/>
-    </mappers>-->
+    </mappers>
 </configuration>
