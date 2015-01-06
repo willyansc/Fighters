@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="errorLog">
+        <param value="UTF-8" name="encoding"/>
+        <param value="/opt/logs/mobile/hotelsupplychain/logs/error.log" name="File"/>
+        <param value="ERROR" name="Threshold"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param value="%d{yy-MM-dd HH:mm:ss,SSS} %-5p %t %c(%F:%L) \#\# %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="serviceLog">
+        <param value="UTF-8" name="encoding"/>
+        <param value="/opt/logs/mobile/hotelsupplychain/logs/service.log" name="File"/>
+        <param value="INFO" name="Threshold"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param value="%d{yy-MM-dd HH:mm:ss,SSS} %-5p %c(%F:%L) \#\# %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <appender class="org.apache.log4j.ConsoleAppender" name="stdout">
+        <param value="UTF-8" name="encoding"/>
+        <param value="INFO" name="Threshold"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param value="%d{yy-MM-dd HH:mm:ss,SSS} %-5p %t %c(%F:%L) \#\# %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="DBLog">
+        <param value="UTF-8" name="encoding"/>
+        <param value="/opt/logs/mobile/hotelsupplychain/logs/db.log" name="File"/>
+        <param value="INFO" name="Threshold"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param value="%d{yy-MM-dd HH:mm:ss,SSS} %-5p %t %c(%F:%L) \#\# %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <logger name="error" additivity="true">
+        <level value="error"/>
+        <appender-ref ref="errorLog"/>
+    </logger>
+    <logger name="service" additivity="true">
+        <appender-ref ref="serviceLog"/>
+        <appender-ref ref="errorLog"/>
+    </logger>
+    <logger name="db" additivity="true">
+        <appender-ref ref="DBLog"/>
+        <appender-ref ref="errorLog"/>
+    </logger>
+
+    <root>
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="errorLog"/>
+    </root>
+
+</log4j:configuration>

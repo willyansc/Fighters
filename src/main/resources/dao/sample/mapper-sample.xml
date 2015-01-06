@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meituan.hotel.sc.sm.HotelSmAttrMapper" >
+    <resultMap id="BaseResultMap" type="com.meituan.hotel.sc.sm.domain.HotelSmAttrDO">
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,type
+    </sql>
+
+    <select id="listByParam" parameterType="com.meituan.hotel.sc.sm.param.HotelSmAttrSearchParam" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from hotel_sm_attr where 1=1
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="name != null">
+            and name = #{name}
+        </if>
+        <if test="type != null">
+            and type = #{type}
+        </if>
+        <if test="offset != null">
+            limit #{offset},#{roms}
+        </if>
+    </select>
+    <update id="update" parameterType="com.meituan.hotel.sc.sm.domain.HotelSmAttrDO">
+        update hotel_sm_attr
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <insert id="insert" parameterType="com.meituan.hotel.sc.sm.domain.HotelSmAttrDO">
+        insert into hotel_sm_attr(<include refid="Base_Column_List" />)
+        values(
+        #{id,jdbcType=INTEGER},
+        #{name,jdbcType=VARCHAR},
+        #{type,jdbcType=INTEGER}		)
+    </insert>
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from hotel_sm_attr
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+</mapper>
