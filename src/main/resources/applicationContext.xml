@@ -19,16 +19,5 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <!--取代context:property-placeholder，因为这种方式可以指定编码，从而可以使用中文的属性值-->
-    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
-        <property name="ignoreResourceNotFound" value="false"/>
-        <property name="locations">
-            <list>
-                <value>classpath*:config/*config.properties</value>
-            </list>
-        </property>
-        <!-- 可注入中文 -->
-        <property name="fileEncoding" value="UTF-8"/>
-    </bean>
+
 </beans>
