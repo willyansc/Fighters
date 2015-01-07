@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by qinliujie on 15-1-6.
@@ -23,10 +24,19 @@ public class SapController {
     private ISampleService sampleServiceImpl;
 
     @ResponseBody
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public APIResult getAllProvinces(@PathVariable int id) {
+    @RequestMapping(value = "/{id}.json", method = RequestMethod.GET)
+    public APIResult getJson(@PathVariable int id) {
         Sample sample = sampleServiceImpl.getById(id);
         return APIUtils.getResponse(sample);
+    }
+
+    @RequestMapping(value = "/{id}.html", method = RequestMethod.GET)
+    public ModelAndView getView(@PathVariable int id){
+        Sample sample = sampleServiceImpl.getById(id);
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("sample/item");
+        mav.addObject("sample", sample);
+        return mav;
     }
 
 }
