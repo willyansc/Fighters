@@ -8,6 +8,7 @@ import com.anonymous.whale.sample.service.ISampleService;
 import com.sun.tracing.dtrace.Attributes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,10 +23,11 @@ public class SapController {
     private ISampleService sampleServiceImpl;
 
     @ResponseBody
-    @RequestMapping(value = "/get", method = RequestMethod.GET)
-    public APIResult getAllProvinces() {
-        Sample sample = sampleServiceImpl.getById(1);
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public APIResult getAllProvinces(@PathVariable int id) {
+        Sample sample = sampleServiceImpl.getById(id);
         return APIUtils.getResponse(sample);
     }
+
 }
 
