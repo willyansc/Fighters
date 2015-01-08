@@ -18,15 +18,15 @@
         </property>
         <!-- 连接数据库所用的URL -->
         <property name="jdbcUrl">
-            <value>jdbc:mysql://localhost/whale?useUnicode=true&amp;characterEncoding=UTF8&amp;connectTimeout=5000&amp;socketTimeout=10000</value>
+            <value>jdbc:mysql://fighters.czsx7qq33ihl.us-west-1.rds.amazonaws.com:3306/whale?useUnicode=true&amp;characterEncoding=UTF8&amp;connectTimeout=5000&amp;socketTimeout=10000</value>
         </property>
         <!-- 连接数据库的用户名 -->
         <property name="user">
-            <value>root</value>
+            <value>fighter</value>
         </property>
         <!-- 连接数据库的密码 -->
         <property name="password">
-            <value></value>
+            <value>fightonusc</value>
         </property>
         <!-- 设置数据库连接池的最大连接数 -->
         <property name="maxPoolSize">
