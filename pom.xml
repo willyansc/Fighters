@@ -13,6 +13,7 @@
         <org.slf4j-version>1.6.6</org.slf4j-version>
         <org.restlet.version>2.0.14</org.restlet.version>
         <org.restlet.ext.servlet.version>2.0.14</org.restlet.ext.servlet.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
         <!-- spring -->
@@ -102,7 +103,7 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.15</version>
+            <version>1.2.17</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
