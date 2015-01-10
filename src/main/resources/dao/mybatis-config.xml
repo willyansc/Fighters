@@ -8,5 +8,7 @@
     <mappers>
         <!--sample-->
         <mapper resource="/dao/sample/mapper-sample.xml"/>
+        <!--image-->
+        <mapper resource="/dao/sim/mapper-image.xml"/>
     </mappers>
 </configuration>
