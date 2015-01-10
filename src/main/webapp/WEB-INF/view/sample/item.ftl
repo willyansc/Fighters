@@ -1,7 +1,7 @@
 <#include "/common/head.ftl" >
 <#include "/common/header.ftl">
-<body >
-<div >
+<body>
+<div>
     姓名：${sample.name}
 </div>
 <div class="container">
@@ -9,4 +9,5 @@
 
     </div>
 </div>
+
 <#include "/common/footer.ftl">

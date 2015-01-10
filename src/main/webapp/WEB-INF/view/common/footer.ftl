@@ -1,5 +1,5 @@
-<script type="text/javascript" src="http://libs.baidu.com/jquery/1.7.0/jquery.min.js" ></script>
-<script type="text/javascript" src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js" ></script>
+<script type="text/javascript" src="http://libs.baidu.com/bootstrap/3.3.0/js/bootstrap.min.js" ></script>
 <#--<script type="text/javascript">
     // seajs 的简单配置
     seajs.config({
