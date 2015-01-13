@@ -12,4 +12,6 @@ public interface ISampleService {
      * @return
      */
     public Sample getById(int id);
+    
+    public int insert(String name);
 }

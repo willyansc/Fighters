@@ -16,4 +16,9 @@
         from sample
         where id = #{id,jdbcType=INTEGER}
     </select>
+    
+    <insert id="insert" parameterType="java.lang.String">
+    	insert into sample (name) 
+    	values (#{name});
+    </insert>
 </mapper>
