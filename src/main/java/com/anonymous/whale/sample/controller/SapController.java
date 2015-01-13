@@ -39,9 +39,9 @@ public class SapController {
     }
 
     @RequestMapping(value = "/insert", method = RequestMethod.GET)
-    public Boolean insert(@RequestParam("name") String name){
+    public APIResult insert(@RequestParam("name") String name){
     	int id = sampleServiceImpl.insert(name);
-        return id > 0;
+        return APIUtils.getResponse(id);
     }
 }
 
