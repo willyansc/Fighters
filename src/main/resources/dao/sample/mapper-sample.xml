@@ -21,4 +21,10 @@
     	insert into sample (name) 
     	values (#{name});
     </insert>
+    
+    <delete id="deleteById" parameterType="java.lang.Integer">
+      delete 
+      from sample 
+      where id = #{id,jdbcType=INTEGER}
+    </delete>
 </mapper>

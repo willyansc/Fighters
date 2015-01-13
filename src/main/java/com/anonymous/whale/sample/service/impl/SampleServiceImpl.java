@@ -24,4 +24,9 @@ public class SampleServiceImpl implements ISampleService{
     	sample.setName(name);
     	return sampleDaoImpl.insert(sample);
     }
+    
+   @Override
+   public int delete(int id){
+	   return sampleDaoImpl.delete(id);
+   }
 }
