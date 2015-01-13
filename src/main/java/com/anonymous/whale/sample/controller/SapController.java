@@ -33,12 +33,17 @@ public class SapController {
 		serviceLog.info("id=" + id);
 		Sample sample = sampleServiceImpl.getById(id);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("sample/item");
-		mav.addObject("sample", sample);
+		if (sample != null) {
+			mav.setViewName("sample/item");
+			mav.addObject("sample", sample);
+		}
+		else{
+			mav.setViewName("sample/not_found");
+		}
 		return mav;
 	}
 
-	@RequestMapping(value = "/insert", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView insert(@RequestParam("name") String name) {
 		int id = sampleServiceImpl.insert(name);
 		ModelAndView mav = new ModelAndView();
@@ -51,8 +56,8 @@ public class SapController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-	public ModelAndView insert(@RequestParam("id") int id) {
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ModelAndView insert(@PathVariable("id") int id) {
 		int flag = sampleServiceImpl.delete(id);
 		ModelAndView mav = new ModelAndView();
 		if (flag > 0) {

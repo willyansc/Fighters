@@ -17,7 +17,7 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     
-    <insert id="insert" parameterType="java.lang.String" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insert" parameterType="com.anonymous.whale.sample.domain.Sample" useGeneratedKeys="true" keyProperty="id">
     	insert into sample (name) 
     	values (#{name});
     </insert>
