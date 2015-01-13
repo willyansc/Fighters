@@ -38,23 +38,24 @@ public class SapController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/insert", method = RequestMethod.GET)
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public ModelAndView insert(@RequestParam("name") String name) {
-		int flag = sampleServiceImpl.insert(name);
+		int id = sampleServiceImpl.insert(name);
 		ModelAndView mav = new ModelAndView();
-		if (flag == 1) {
+		if (id > 0) {
 			mav.setViewName("sample/insert_item_success");
+			mav.addObject("sample", sampleServiceImpl.getById(id));
 		} else {
 			mav.setViewName("sample/insert_item_fail");
 		}
 		return mav;
 	}
 
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
 	public ModelAndView insert(@RequestParam("id") int id) {
 		int flag = sampleServiceImpl.delete(id);
 		ModelAndView mav = new ModelAndView();
-		if (flag == 1) {
+		if (flag > 0) {
 			mav.setViewName("sample/delete_item_success");
 		} else {
 			mav.setViewName("sample/delete_item_fail");

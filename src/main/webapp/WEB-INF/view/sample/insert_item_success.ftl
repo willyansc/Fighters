@@ -2,7 +2,7 @@
 <#include "/common/header.ftl">
 <body>
 <div>
-    Insert Success!
+    Insert Success! id: ${sample.id}, 姓名：${sample.name}
 </div>
 <div class="container">
     <div class="row">

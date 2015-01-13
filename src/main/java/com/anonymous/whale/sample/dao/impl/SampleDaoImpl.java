@@ -27,8 +27,8 @@ public class SampleDaoImpl implements ISampleDao {
     
     @Override
     public int insert(Sample sample){
-    	String name = sample.getName();
-    	return (Integer)sqlSessionTemplate.insert(STATEMENT_INSERT_NAME, name);
+    	sqlSessionTemplate.insert(STATEMENT_INSERT_NAME, sample);
+    	return sample.getId();
     }
     
     @Override
