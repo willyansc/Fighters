@@ -12,4 +12,8 @@ public interface ISampleDao {
      * @return
      */
     public Sample getById(int id);
+    
+    public int insert(Sample sample);
+    
+    public int delete(int id);
 }

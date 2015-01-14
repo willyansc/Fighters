@@ -17,30 +17,54 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/sample")
 public class SapController {
-    @Autowired
-    private ISampleService sampleServiceImpl;
-    private static final Log serviceLog = LogFactory.getLog("service");
+	@Autowired
+	private ISampleService sampleServiceImpl;
+	private static final Log serviceLog = LogFactory.getLog("service");
 
-    @ResponseBody
-    @RequestMapping(value = "/{id}.json", method = RequestMethod.GET)
-    public APIResult getJson(@PathVariable int id) {
-        Sample sample = sampleServiceImpl.getById(id);
-        return APIUtils.getResponse(sample);
-    }
+	@ResponseBody
+	@RequestMapping(value = "/{id}.json", method = RequestMethod.GET)
+	public APIResult getJson(@PathVariable int id) {
+		Sample sample = sampleServiceImpl.getById(id);
+		return APIUtils.getResponse(sample);
+	}
 
-    @RequestMapping(value = "/{id}.html", method = RequestMethod.GET)
-    public ModelAndView getView(@PathVariable int id){
-        serviceLog.info("id="+id);
-        Sample sample = sampleServiceImpl.getById(id);
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("sample/item");
-        mav.addObject("sample", sample);
-        return mav;
-    }
+	@RequestMapping(value = "/{id}.html", method = RequestMethod.GET)
+	public ModelAndView getView(@PathVariable int id) {
+		serviceLog.info("id=" + id);
+		Sample sample = sampleServiceImpl.getById(id);
+		ModelAndView mav = new ModelAndView();
+		if (sample != null) {
+			mav.setViewName("sample/item");
+			mav.addObject("sample", sample);
+		}
+		else{
+			mav.setViewName("sample/not_found");
+		}
+		return mav;
+	}
 
-    @RequestMapping(value= "/items.html", method = RequestMethod.GET)
-    public APIResult insert(@RequestParam String name){
-        return null;
-    }
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView insert(@RequestParam("name") String name) {
+		int id = sampleServiceImpl.insert(name);
+		ModelAndView mav = new ModelAndView();
+		if (id > 0) {
+			mav.setViewName("sample/insert_item_success");
+			mav.addObject("sample", sampleServiceImpl.getById(id));
+		} else {
+			mav.setViewName("sample/insert_item_fail");
+		}
+		return mav;
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ModelAndView insert(@PathVariable("id") int id) {
+		int flag = sampleServiceImpl.delete(id);
+		ModelAndView mav = new ModelAndView();
+		if (flag > 0) {
+			mav.setViewName("sample/delete_item_success");
+		} else {
+			mav.setViewName("sample/delete_item_fail");
+		}
+		return mav;
+	}
 }
-
